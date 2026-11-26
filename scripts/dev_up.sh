@@ -13,14 +13,14 @@ docker compose up -d db
 
 echo "Waiting for DB healthy..."
 for i in {1..30}; do
-  if docker compose exec -T db pg_isready -U trainer -d trainer >/dev/null 2>&1; then
+  if docker compose exec -T db pg_isready -U cadence -d cadence >/dev/null 2>&1; then
     break
   fi
   sleep 1
 done
 
 # If volume already existed before init script mounted, apply migration idempotently
-docker compose exec -T db psql -U trainer -d trainer -f /docker-entrypoint-initdb.d/001_init.sql >/dev/null 2>&1 || true
+docker compose exec -T db psql -U cadence -d cadence -f /docker-entrypoint-initdb.d/001_init.sql >/dev/null 2>&1 || true
 
 cd "$ROOT/backend"
 python3 -m venv .venv

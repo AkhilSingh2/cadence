@@ -1,4 +1,4 @@
-/* Trainer demo mode (GitHub Pages build only).
+/* Cadence demo mode (GitHub Pages build only).
  *
  * Answers the web UI's /v1 calls in the browser with sample data so the app can be
  * tried without Postgres or the API. It is included only by scripts/build_demo.py (GitHub Pages);
@@ -372,8 +372,8 @@
     },
   };
 
-  window.TRAINER_DEMO = true;
-  window.TrainerDemo = {
+  window.CADENCE_DEMO = true;
+  window.CadenceDemo = {
     async handle(path, { method = "GET", body } = {}) {
       await new Promise((r) => setTimeout(r, 120 + Math.random() * 180));
       const handler = routes[`${method} ${path.split("?")[0]}`];

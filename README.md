@@ -1,10 +1,10 @@
-# Trainer
+# Cadence
 
-**An adaptive, voice-first performance companion.** Trainer reads last night's recovery and today's mood, decides what kind of day it is, and reshapes the plan for training, nutrition and study around it. On a rough morning it says one kind sentence, asks for one small thing, and counts fifteen honest minutes as a win.
+**An adaptive, voice-first, burnout-aware performance companion.** Cadence reads last night's recovery and today's mood, decides what kind of day it is, and reshapes the plan for training, nutrition and study around it. On a rough morning it says one kind sentence, asks for one small thing, and counts fifteen honest minutes as a win.
 
-**[▶ Live demo](https://akhilsingh2.github.io/trainer/)**: the web UI in demo mode, running in your browser with sample data.
+**[▶ Live demo](https://akhilsingh2.github.io/cadence/)**: the web UI in demo mode, running in your browser with sample data.
 
-![Trainer web UI on a red day](docs/screenshots/red-day.jpg)
+![Cadence web UI on a red day](docs/screenshots/red-day.jpg)
 
 ## What it does
 
@@ -98,7 +98,7 @@ Or run `./scripts/dev_up.sh` to do all of that in one step.
 
 ```bash
 brew install xcodegen
-cd ios && xcodegen generate && open Trainer.xcodeproj
+cd ios && xcodegen generate && open Cadence.xcodeproj
 ```
 
 Set your signing team. The simulator talks to `http://127.0.0.1:8000/v1`. On a device, set your computer's LAN IP under **Log → API**.
@@ -114,7 +114,7 @@ The smoke test runs a bad day and checks for a RED or AMBER state, hidden calori
 
 ## Demo mode
 
-The [live demo](https://akhilsingh2.github.io/trainer/) is a static build of the same web UI, made with `python3 scripts/build_demo.py`. It adds [`demo/demo-api.js`](demo/demo-api.js), which answers the UI's `/v1` calls in the browser:
+The [live demo](https://akhilsingh2.github.io/cadence/) is a static build of the same web UI, made with `python3 scripts/build_demo.py`. It adds [`demo/demo-api.js`](demo/demo-api.js), which answers the UI's `/v1` calls in the browser:
 - readiness scoring is a line-by-line port of `readiness.py`
 - the plans for each day state are snapshots of real API responses
 - chat uses a port of the offline coach

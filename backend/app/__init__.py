@@ -1,1 +1,1 @@
-"""Trainer companion API."""
+"""Cadence companion API."""

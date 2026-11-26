@@ -1,18 +1,18 @@
 services:
   db:
     image: pgvector/pgvector:pg16
-    container_name: trainer-db
+    container_name: cadence-db
     environment:
-      POSTGRES_USER: trainer
-      POSTGRES_PASSWORD: trainer
-      POSTGRES_DB: trainer
+      POSTGRES_USER: cadence
+      POSTGRES_PASSWORD: cadence
+      POSTGRES_DB: cadence
     ports:
       - "5434:5432"
     volumes:
-      - trainer_pg:/var/lib/postgresql/data
+      - cadence_pg:/var/lib/postgresql/data
       - ./supabase/migrations/0001_local.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U trainer -d trainer"]
+      test: ["CMD-SHELL", "pg_isready -U cadence -d cadence"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -20,9 +20,9 @@ services:
   api:
     build:
       context: ./backend
-    container_name: trainer-api
+    container_name: cadence-api
     environment:
-      DATABASE_URL: postgresql://trainer:trainer@db:5432/trainer
+      DATABASE_URL: postgresql://cadence:cadence@db:5432/cadence
       ALLOW_DEV_AUTH: "true"
       DEV_USER_ID: "00000000-0000-4000-8000-000000000001"
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
@@ -35,4 +35,4 @@ services:
         condition: service_healthy
 
 volumes:
-  trainer_pg:
+  cadence_pg:

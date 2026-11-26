@@ -22,7 +22,7 @@ marker = '<script src="./app.js"></script>'
 if marker not in html:
     raise SystemExit("index.html no longer loads ./app.js; update build_demo.py")
 html = html.replace(marker, '<script src="./demo-api.js"></script>\n  ' + marker)
-html = html.replace("<title>Trainer</title>", "<title>Trainer — demo</title>")
+html = html.replace("<title>Cadence</title>", "<title>Cadence — demo</title>")
 index.write_text(html, encoding="utf-8")
 (OUT / ".nojekyll").write_text("")
 print(f"demo built -> {OUT.relative_to(ROOT)}")

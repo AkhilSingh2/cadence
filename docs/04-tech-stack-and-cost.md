@@ -98,7 +98,7 @@ See [05-roadmap.md](05-roadmap.md).
 ## 6. Repo layout (target)
 
 ```text
-trainer/
+cadence/
   README.md
   docs/
     01-architecture.md
@@ -121,8 +121,8 @@ trainer/
     requirements.txt
     Dockerfile
   ios/
-    Trainer/          # Xcode project (Phase 1+)
-    TrainerWatch/
+    Cadence/          # Xcode project (Phase 1+)
+    CadenceWatch/
 ```
 
 Backend and iOS app code are scaffolded starting in Phase 1 of the roadmap; this document set is the blueprint they implement against.

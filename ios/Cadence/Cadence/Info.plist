@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Trainer</string>
+	<string>Cadence</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -21,13 +21,13 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSHealthShareUsageDescription</key>
-	<string>Trainer reads sleep, heart rate, energy, and workouts to adapt your daily plan.</string>
+	<string>Cadence reads sleep, heart rate, energy, and workouts to adapt your daily plan.</string>
 	<key>NSHealthUpdateUsageDescription</key>
-	<string>Trainer may save workouts you log.</string>
+	<string>Cadence may save workouts you log.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Trainer listens during voice check-ins.</string>
+	<string>Cadence listens during voice check-ins.</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Trainer transcribes your voice on-device for check-ins.</string>
+	<string>Cadence transcribes your voice on-device for check-ins.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

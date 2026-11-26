@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct TrainerApp: App {
+struct CadenceApp: App {
     @StateObject private var appModel = AppModel()
 
     var body: some Scene {

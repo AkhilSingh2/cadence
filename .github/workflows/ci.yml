@@ -22,15 +22,15 @@ jobs:
       db:
         image: pgvector/pgvector:pg16
         env:
-          POSTGRES_USER: trainer
-          POSTGRES_PASSWORD: trainer
-          POSTGRES_DB: trainer
+          POSTGRES_USER: cadence
+          POSTGRES_PASSWORD: cadence
+          POSTGRES_DB: cadence
         ports: ["5434:5432"]
         options: >-
-          --health-cmd "pg_isready -U trainer -d trainer"
+          --health-cmd "pg_isready -U cadence -d cadence"
           --health-interval 5s --health-timeout 5s --health-retries 10
     env:
-      DATABASE_URL: postgresql://trainer:trainer@localhost:5434/trainer
+      DATABASE_URL: postgresql://cadence:cadence@localhost:5434/cadence
       ALLOW_DEV_AUTH: "true"
       JOB_SECRET: ci-job-secret
     steps:
@@ -45,7 +45,7 @@ jobs:
         working-directory: backend
         run: python -m pytest -q
       - name: Apply schema
-        run: PGPASSWORD=trainer psql -h localhost -p 5434 -U trainer -d trainer -v ON_ERROR_STOP=1 -q -f supabase/migrations/0001_local.sql
+        run: PGPASSWORD=cadence psql -h localhost -p 5434 -U cadence -d cadence -v ON_ERROR_STOP=1 -q -f supabase/migrations/0001_local.sql
       - name: End-to-end smoke test
         run: |
           cd backend

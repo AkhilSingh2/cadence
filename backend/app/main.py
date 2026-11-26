@@ -14,7 +14,7 @@ from app.gateway.rest import router as rest_router
 from app.gateway.websocket import router as ws_router
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("trainer")
+logger = logging.getLogger("cadence")
 
 WEB_DIR = Path(__file__).resolve().parents[1] / "web"
 
@@ -22,7 +22,7 @@ WEB_DIR = Path(__file__).resolve().parents[1] / "web"
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     settings = get_settings()
-    logger.info("starting trainer api env=%s", settings.environment)
+    logger.info("starting cadence api env=%s", settings.environment)
     await init_pool()
     yield
     await close_pool()
@@ -30,7 +30,7 @@ async def lifespan(_app: FastAPI):
 
 def create_app() -> FastAPI:
     settings = get_settings()
-    app = FastAPI(title="Trainer Companion API", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="Cadence Companion API", version="0.1.0", lifespan=lifespan)
     origins = [o.strip() for o in settings.cors_origins.split(",") if o.strip()]
     app.add_middleware(
         CORSMiddleware,

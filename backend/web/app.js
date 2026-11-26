@@ -23,7 +23,7 @@ let recognition = null;
 
 async function api(path, { method = "GET", body } = {}) {
   // Demo builds (GitHub Pages) answer locally with sample data; see demo/demo-api.js.
-  if (window.TrainerDemo) return window.TrainerDemo.handle(path, { method, body });
+  if (window.CadenceDemo) return window.CadenceDemo.handle(path, { method, body });
   let res;
   try {
     res = await fetch(`${API}${path}`, {
@@ -331,6 +331,6 @@ function setupVoice() {
   };
 }
 
-if (window.TRAINER_DEMO) document.getElementById("demoNote").hidden = false;
+if (window.CADENCE_DEMO) document.getElementById("demoNote").hidden = false;
 setupVoice();
 refresh().catch((e) => toast(e.message));

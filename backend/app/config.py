@@ -6,11 +6,11 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
-    app_name: str = "trainer"
+    app_name: str = "cadence"
     environment: str = "local"
     api_prefix: str = "/v1"
 
-    database_url: str = "postgresql://trainer:trainer@localhost:5434/trainer"
+    database_url: str = "postgresql://cadence:cadence@localhost:5434/cadence"
     # Solo/dev: skip JWT and trust this user id when X-User-Id header is sent.
     dev_user_id: str = "00000000-0000-4000-8000-000000000001"
     allow_dev_auth: bool = True

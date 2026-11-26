@@ -4,15 +4,15 @@ BASE="${1:-http://127.0.0.1:8000/v1}"
 HDR=(-H "Content-Type: application/json" -H "X-User-Id: 00000000-0000-4000-8000-000000000001")
 
 echo "== healthz =="
-curl -sf "$BASE/healthz" | tee /tmp/trainer_healthz.json
+curl -sf "$BASE/healthz" | tee /tmp/cadence_healthz.json
 echo
 
 echo "== demo bad day =="
-curl -sf -X POST "$BASE/demo/bad-day" "${HDR[@]}" | tee /tmp/trainer_bad_day.json
+curl -sf -X POST "$BASE/demo/bad-day" "${HDR[@]}" | tee /tmp/cadence_bad_day.json
 echo
 python3 - <<'PY'
 import json
-p=json.load(open("/tmp/trainer_bad_day.json"))
+p=json.load(open("/tmp/cadence_bad_day.json"))
 assert p["day_state"] in ("RED","AMBER","DELOAD"), p["day_state"]
 nut=p["nutrition"]
 assert nut.get("surface_calories") is False
@@ -22,7 +22,7 @@ print("bad-day plan OK:", p["day_state"], "study", study.get("minutes"), "opener
 PY
 
 echo "== chat =="
-curl -sf -X POST "$BASE/chat" "${HDR[@]}" -d '{"message":"I hate mass-gainer shakes","turn_class":"chat"}' | tee /tmp/trainer_chat.json
+curl -sf -X POST "$BASE/chat" "${HDR[@]}" -d '{"message":"I hate mass-gainer shakes","turn_class":"chat"}' | tee /tmp/cadence_chat.json
 echo
 
 echo "== preference =="
@@ -35,6 +35,6 @@ for i in 1 2 3; do
 done
 
 echo "== dashboard =="
-curl -sf "$BASE/dashboard" "${HDR[@]}" | tee /tmp/trainer_dash.json
+curl -sf "$BASE/dashboard" "${HDR[@]}" | tee /tmp/cadence_dash.json
 echo
 echo "SMOKE OK"

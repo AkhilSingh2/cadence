@@ -1,4 +1,4 @@
-# Trainer iOS
+# Cadence iOS
 
 SwiftUI app (iOS 17+) with HealthKit sync, text chat, voice check-ins, and progress charts.
 
@@ -8,7 +8,7 @@ SwiftUI app (iOS 17+) with HealthKit sync, text chat, voice check-ins, and progr
 brew install xcodegen   # once
 cd ios
 xcodegen generate
-open Trainer.xcodeproj
+open Cadence.xcodeproj
 ```
 
 1. Select your Team under Signing & Capabilities.
