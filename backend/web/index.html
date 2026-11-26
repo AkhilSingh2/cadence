@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg"></div>
+  <header class="top">
+    <div>
+      <p class="brand">Trainer</p>
+      <p class="tag">Mac companion · same brain as the phone app</p>
+    </div>
+    <div class="top-actions">
+      <span id="apiDot" class="dot" title="API status"></span>
+      <span id="aiBadge" class="ai-badge">AI: …</span>
+      <button type="button" id="btnRefresh" class="ghost">Refresh</button>
+      <button type="button" id="btnGoodDay" class="ghost">Simulate good day</button>
+      <button type="button" id="btnBadDay" class="danger">Simulate bad day</button>
+    </div>
+  </header>
+  <p id="demoNote" class="demo-note" hidden><strong>Demo mode · sample data</strong> — runs in your browser with a port of the readiness engine and the offline coach. Nothing is saved. <a href="https://github.com/AkhilSingh2/trainer">Source and setup</a></p>
+  <p id="aiHint" class="ai-hint" hidden></p>
+
+  <main class="grid">
+    <section class="panel span-2" id="todayPanel">
+      <div class="panel-head">
+        <h2>Today</h2>
+        <span id="statePill" class="pill">—</span>
+      </div>
+      <p id="opener" class="opener">Loading plan…</p>
+      <div class="cards" id="planCards"></div>
+      <div class="tasks" id="taskList"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Log</h2></div>
+      <form id="moodForm" class="stack">
+        <label>Mood
+          <div class="row3">
+            <span>Valence <input type="range" id="valence" min="1" max="5" value="3" /></span>
+            <span>Energy <input type="range" id="energy" min="1" max="5" value="3" /></span>
+            <span>Stress <input type="range" id="stress" min="1" max="5" value="3" /></span>
+          </div>
+        </label>
+        <input id="trigger" type="text" placeholder="What triggered it? (optional)" />
+        <button type="submit" class="primary">Save mood</button>
+      </form>
+      <form id="weightForm" class="stack tight">
+        <label>Weight (kg)
+          <input id="weight" type="number" step="0.1" value="70" />
+        </label>
+        <button type="submit" class="ghost">Save weight</button>
+      </form>
+      <form id="prefForm" class="stack tight">
+        <label>Remember preference
+          <input id="pref" type="text" placeholder="e.g. Dislikes mass-gainer shakes" />
+        </label>
+        <button type="submit" class="ghost">Save memory</button>
+      </form>
+    </section>
+
+    <section class="panel span-2">
+      <div class="panel-head">
+        <h2>Chat</h2>
+        <label class="check"><input type="checkbox" id="dsaMode" /> DSA tutor (no full solutions)</label>
+      </div>
+      <div id="chatLog" class="chat"></div>
+      <form id="chatForm" class="composer">
+        <input id="chatInput" type="text" placeholder="Ask about food, study, or how you feel…" autocomplete="off" />
+        <button type="button" id="btnMic" class="ghost" title="Hold voice (Chrome/Safari)">Mic</button>
+        <button type="submit" class="primary">Send</button>
+      </form>
+      <p id="voiceStatus" class="muted"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Progress</h2></div>
+      <div id="dash" class="dash">
+        <p class="muted">No data yet.</p>
+      </div>
+    </section>
+  </main>
+
+  <p id="toast" class="toast" hidden></p>
+  <script src="./app.js"></script>
+</body>
+</html>
