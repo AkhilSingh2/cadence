@@ -1,0 +1,38 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: trainer-db
+    environment:
+      POSTGRES_USER: trainer
+      POSTGRES_PASSWORD: trainer
+      POSTGRES_DB: trainer
+    ports:
+      - "5434:5432"
+    volumes:
+      - trainer_pg:/var/lib/postgresql/data
+      - ./supabase/migrations/0001_local.sql:/docker-entrypoint-initdb.d/001_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trainer -d trainer"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    container_name: trainer-api
+    environment:
+      DATABASE_URL: postgresql://trainer:trainer@db:5432/trainer
+      ALLOW_DEV_AUTH: "true"
+      DEV_USER_ID: "00000000-0000-4000-8000-000000000001"
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      JOB_SECRET: local-job-secret-change-me
+      CORS_ORIGINS: "*"
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  trainer_pg:

@@ -1,0 +1,13 @@
+.env
+backend/.env
+backend/.venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+ios/Trainer.xcodeproj/
+ios/Trainer.xcworkspace/
+DerivedData/
+*.xcuserstate
+_site/
