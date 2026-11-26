@@ -1,0 +1,35 @@
+name: Trainer
+options:
+  bundleIdPrefix: com.trainer
+  deploymentTarget:
+    iOS: "17.0"
+    watchOS: "10.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    DEVELOPMENT_TEAM: "" # set in Xcode
+targets:
+  Trainer:
+    type: application
+    platform: iOS
+    sources:
+      - path: Trainer/Trainer
+    resources: []
+    info:
+      path: Trainer/Trainer/Info.plist
+      properties:
+        CFBundleDisplayName: Trainer
+        UILaunchScreen: {}
+        NSHealthShareUsageDescription: Trainer reads sleep, heart rate, energy, and workouts to adapt your daily plan.
+        NSHealthUpdateUsageDescription: Trainer may save workouts you log.
+        NSSpeechRecognitionUsageDescription: Trainer transcribes your voice on-device for check-ins.
+        NSMicrophoneUsageDescription: Trainer listens during voice check-ins.
+        UIBackgroundModes: [fetch, processing]
+    entitlements:
+      path: Trainer/Trainer/Trainer.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.trainer.app
+        CODE_SIGN_STYLE: Automatic
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        TARGETED_DEVICE_FAMILY: "1,2"
