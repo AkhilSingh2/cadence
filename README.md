@@ -106,7 +106,7 @@ Set your signing team. The simulator talks to `http://127.0.0.1:8000/v1`. On a d
 ## Tests
 
 ```bash
-cd backend && pytest                                  # readiness engine + DSA guardrail unit tests
+cd backend && python -m pytest                            # readiness engine + DSA guardrail unit tests
 ./scripts/smoke_test.sh http://127.0.0.1:8000/v1      # end-to-end against a running stack
 ```
 

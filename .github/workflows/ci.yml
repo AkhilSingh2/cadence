@@ -43,7 +43,7 @@ jobs:
       - run: pip install -r backend/requirements.txt
       - name: Unit tests
         working-directory: backend
-        run: pytest -q
+        run: python -m pytest -q
       - name: Apply schema
         run: PGPASSWORD=trainer psql -h localhost -p 5434 -U trainer -d trainer -v ON_ERROR_STOP=1 -q -f supabase/migrations/0001_local.sql
       - name: End-to-end smoke test
